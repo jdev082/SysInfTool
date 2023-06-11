@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 SysInfTool v1.0
 MIT License, 2023
