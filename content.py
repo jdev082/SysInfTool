@@ -23,7 +23,7 @@ content = f"""
 <h2>Computer Hardware</h2>
 <p>CPU: {cpu}</p>
 <p>GPU: {gpu}, {gpu_vram}</p>
-<p>RAM: {str(psutil.virtual_memory().total / (1024 * 1024 * 1024))[0:4]} GB
+<p>RAM: {str(psutil.virtual_memory().total / (1024 * 1024 * 1024))[0:4]} GB</p>
 <h2>Networking</h2>
 <pre>{net}</pre>
 <h2>Storage</h2>
