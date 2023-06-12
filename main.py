@@ -24,6 +24,8 @@ if len(sys.argv) > 1:
         content = content.replace("</h2>", "\033[0m")
         content = content.replace("<p>", " ")
         content = content.replace("</p>", " ")
+        content = content.replace("<pre>", " ")
+        content = content.replace("</pre>", " ")
         print(content)
         exit()
     if sys.argv[1] == 'h' or sys.argv[1] == '--help':
