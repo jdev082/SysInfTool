@@ -7,7 +7,8 @@ cpu = os.popen("cat /proc/cpuinfo | grep 'model name' | cut -c14- | sed -n 1p").
 instdat = os.popen("stat / | grep 'Birth' | sed 's/Birth: //g' | cut -b 2-11").read()
 net = os.popen("nmcli device status").read()
 storage = os.popen("df -h").read()
-gpu = os.popen('GPU=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2);echo $GPU $RAM').read()[0:50]
+gpu = os.popen('GPU=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2);echo $GPU').read()[0:50]
+gpu_vram = os.popen('RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2);echo $RAM').read().replace("]", " ")
 
 content = f"""
 <h1>{distro.name()} {distro.version()}</h1>
@@ -21,7 +22,7 @@ content = f"""
 <p>installation date: {instdat}</p>
 <h2>Computer Hardware</h2>
 <p>CPU: {cpu}</p>
-<p>GPU: {gpu}</p>
+<p>GPU: {gpu}, {gpu_vram}</p>
 <p>RAM: {str(psutil.virtual_memory().total / (1024 * 1024 * 1024))[0:4]} GB
 <h2>Networking</h2>
 <pre>{net}</pre>
