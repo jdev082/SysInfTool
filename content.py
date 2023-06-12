@@ -13,10 +13,10 @@ gpu_vram = os.popen('RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -
 content = f"""
 <h1>{distro.name()} {distro.version()}</h1>
 <h2>Userspace</h2>
-<p>user: {os.getenv('USER')}
-<p>hostname: {os.getenv('HOSTNAME')}
-<p>Desktop Environment: {os.getenv('DESKTOP_SESSION')}
-<p>session type: {os.getenv('XDG_SESSION_TYPE')}
+<p>user: {os.getenv('USER')}</p>
+<p>hostname: {os.getenv('HOSTNAME')}</p>
+<p>Desktop Environment: {os.getenv('DESKTOP_SESSION')}</p>
+<p>session type: {os.getenv('XDG_SESSION_TYPE')}</p>
 <h2>System Software Components</h2>
 <p>kernel: {platform.release()}</p>
 <p>installation date: {instdat}</p>
