@@ -7,7 +7,7 @@ jdev082 (https://github.com/jdev082)
 
 # Library Imports
 import sys
-from PyQt6.QtWidgets import QApplication, QLabel, QWidget
+from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QScrollArea
 from functions import *
 
 # Data Imports
@@ -34,11 +34,12 @@ app = QApplication([])
 
 window = QWidget()
 window.setWindowTitle(nam)
-window.setFixedSize(340, 480)
+window.setFixedSize(500, 600)
 
-info = QLabel(content, parent=window)
-info.move(10, 15)
-
+scroll = QScrollArea(parent=window)
+info = QLabel(content, parent=scroll)
+scroll.setWidget(info)
+scroll.setFixedSize(500, 600)
 window.show()
 
 sys.exit(app.exec())
